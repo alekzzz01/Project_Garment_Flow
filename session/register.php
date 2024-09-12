@@ -49,9 +49,12 @@ $connection->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 
-
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+    <style>@import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);</style>
 
 
 
@@ -60,7 +63,7 @@ $connection->close();
 
 
         <div class="bg-gray-50 font-[sans-serif]">
-            <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+            <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4" x-data="app()">
                 <div class="max-w-md w-full">
                 <!-- <a href="javascript:void(0)"><img
                     src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-40 mb-8 mx-auto block' />
@@ -92,14 +95,25 @@ $connection->close();
                     <div>
                         <label class="text-gray-800 text-sm mb-2 block">Password</label>
                         <div class="relative flex items-center">
-                            <input id="password" name="password" type="password" required class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Enter password" />
+                        <input type="password" id="password" x-model="password" name="password" @input="checkStrength" required class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Enter password" />
                             <button type="button" onclick="togglePassword('password', 'togglePasswordIcon')" class="absolute inset-y-0 right-4 flex items-center">
                                 <i id="togglePasswordIcon" class='bx bxs-show w-4 h-4 text-gray-400'></i>
                             </button>
                         </div>
                     </div>
 
+                    <div class="flex -mx-1 mt-2">
+                        <template x-for="(v,i) in 5" :key="i">
+                            <div class="w-1/5 px-1">
+                                <div class="h-2 rounded-xl transition-colors"
+                                    :class="i < passwordScore ? (passwordScore === 5 ? 'bg-green-500' : 'bg-red-400') : 'bg-gray-200'">
+                                </div>
+                            </div>
+                        </template>
+                    </div>
 
+                  
+                  
                     <div>
                         <label class="text-gray-800 text-sm mb-2 block">Confirm Password</label>
                         <div class="relative flex items-center">
@@ -110,26 +124,32 @@ $connection->close();
                         </div>
                     </div>
 
+                   
+
 
                     
 
                     <div class="flex">
-                        <input type="checkbox" class="w-4" />
+                        <input type="checkbox" x-model="termsAccepted" class="w-4" />
                         <label class="text-sm ml-2 text-gray-500">I have read and accept the <a href="javascript:void(0)"
                             class="text-sm text-blue-600 hover:underline">Terms and Conditions</a></label>
                     </div>
 
                     <div class="!mt-8">
-                        <button type="submit" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                        Sign up
+                        <button type="submit" :disabled="!isFormValid" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                            Sign up
                         </button>
                     </div>
+
                     <p class="text-gray-800 text-sm !mt-8 text-center">Already have an account? <a href="login.php" class="text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold">Login here</a></p>
-                    </form>
+                    
+                </form>
                 </div>
                 </div>
             </div>
         </div>
+
+
 
 
     
@@ -151,11 +171,71 @@ $connection->close();
                 passwordInput.type = "password";
                 toggleIcon.classList.remove("bxs-hide");
                 toggleIcon.classList.add("bxs-show");
-              
+                
               
             }
         }
 </script>
+
+<script>
+function app() {
+    return {
+        showPasswordField: true,
+        passwordScore: 0,
+        password: '',
+        chars: {
+            lower: 'abcdefghijklmnopqrstuvwxyz',
+            upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            numeric: '0123456789',
+            symbols: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+        },
+        charsLength: 12,
+        checkStrength: function() { 
+            if (!this.password) {
+                this.passwordScore = 0;
+                return;
+            }
+            
+            let score = 0;
+
+            // Check for minimum length
+            if (this.password.length >= 8) {
+                score++;
+            }
+
+            // Check for lowercase letters
+            if (/[a-z]/.test(this.password)) {
+                score++;
+            }
+
+            // Check for uppercase letters
+            if (/[A-Z]/.test(this.password)) {
+                score++;
+            }
+
+            // Check for numbers
+            if (/\d/.test(this.password)) {
+                score++;
+            }
+
+            // Check for special characters
+            if (/[!@#$%^&*]/.test(this.password)) {
+                score++;
+            }
+
+            this.passwordScore = score;
+        },
+
+        get isFormValid() {
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                return this.passwordScore >= 5 && this.termsAccepted && this.password === confirmPassword;
+        }
+      
+    }
+}
+
+</script>
+
 
 
 

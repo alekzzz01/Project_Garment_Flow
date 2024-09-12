@@ -1,6 +1,7 @@
 <?php
 require 'db.php';
 
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
-        if (password_verify($password, $user['password'])) {
+        if (password_verify($password, $user['user_password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
 
-            header('Location: dashboard.php');
+            header('Location: ../pages/dashboard.php');
             exit();
         } else {
             $error = "Invalid password.";
@@ -57,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="p-8 rounded-2xl bg-white shadow">
                     <h2 class="text-gray-800 text-center text-2xl font-bold">Sign in</h2>
-                    <form class="mt-8 space-y-4">
+                    <form method="POST" class="mt-8 space-y-4">
                     <div>
                         <label class="text-gray-800 text-sm mb-2 block">Username</label>
                         <div class="relative flex items-center">
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label class="text-gray-800 text-sm mb-2 block">Password</label>
                         <div class="relative flex items-center">
                             <input id="password" name="password" type="password" required class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Enter password" />
-                            <button type="button" onclick="togglePassword('password', 'togglePasswordIcon')" class="absolute right-4">
+                            <button type="button" onclick="togglePassword('password', 'togglePasswordIcon')" class="absolute inset-y-0 right-4 flex items-center">
                                 <i id="togglePasswordIcon" class='bx bxs-show w-4 h-4 text-gray-400'></i>
                             </button>
                         </div>
@@ -94,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <div class="!mt-8">
-                        <button type="button" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                        <button type="submit" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                         Sign in
                         </button>
                     </div>
@@ -102,9 +103,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </form>
                 </div>
                 </div>
+
+                <?php if (isset($error)): ?>
+                    <div class="text-red-500 text-sm mt-8"><?php echo $error; ?></div>
+                <?php endif; ?>
+
             </div>
         </div>
 
+
+        
 
     
 </body>
