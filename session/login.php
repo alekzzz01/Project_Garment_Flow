@@ -1,11 +1,34 @@
 <?php
-
 require 'db.php';
 
+session_start();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $username = $connection->real_escape_string($_POST['username']);
+    $password = $connection->real_escape_string($_POST['password']);
 
+    $query = "SELECT * FROM users WHERE username='$username'";
+    $result = $connection->query($query);
+    
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+
+            header('Location: dashboard.php');
+            exit();
+        } else {
+            $error = "Invalid password.";
+        }
+    } else {
+        $error = "No user found with this username.";
+    }
+}
 ?>
+
 
 
 <!DOCTYPE html>
@@ -36,9 +59,9 @@ require 'db.php';
                     <h2 class="text-gray-800 text-center text-2xl font-bold">Sign in</h2>
                     <form class="mt-8 space-y-4">
                     <div>
-                        <label class="text-gray-800 text-sm mb-2 block">User name</label>
+                        <label class="text-gray-800 text-sm mb-2 block">Username</label>
                         <div class="relative flex items-center">
-                        <input name="username" type="text" required class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Enter user name" />
+                        <input name="username" type="text" required class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Enter username" />
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4" viewBox="0 0 24 24">
                             <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
                             <path d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z" data-original="#000000"></path>

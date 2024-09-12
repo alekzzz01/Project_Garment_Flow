@@ -1,12 +1,46 @@
 <?php
 
-require 'db.php';
+require 'db.php'; 
 
+session_start();
 
+$error = '';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
 
+    if ($password !== $confirmPassword) {
+        $error = 'Passwords do not match.';
+    } else {
+        $stmt = $connection->prepare("SELECT * FROM users WHERE username = ? OR user_email = ?");
+        $stmt->bind_param("ss", $username, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $error = 'Username or email already exists.';
+        } else {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $connection->prepare("INSERT INTO users (username, user_email, user_password) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $username, $email, $hashedPassword);
+
+            if ($stmt->execute()) {
+                header('Location: login.php');
+                exit();
+            } else {
+                $error = 'Failed to register. Please try again.';
+            }
+        }
+
+        $stmt->close();
+    }
+}
+
+$connection->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +68,7 @@ require 'db.php';
 
                 <div class="p-8 rounded-2xl bg-white shadow">
                     <h2 class="text-gray-800 text-center text-2xl font-bold">Sign up</h2>
-                    <form class="mt-8 space-y-4">
+                    <form method="POST" class="mt-8 space-y-4">
                     <div>
                         <label class="text-gray-800 text-sm mb-2 block">Email</label>
                         <div class="relative flex items-center">
@@ -86,7 +120,7 @@ require 'db.php';
                     </div>
 
                     <div class="!mt-8">
-                        <button type="button" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                        <button type="submit" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                         Sign up
                         </button>
                     </div>
