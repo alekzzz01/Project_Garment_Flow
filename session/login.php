@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = "Invalid password.";
         }
     } else {
-        $error = "No user found with this username.";
+        $error = "No user found with this username or invalid password.";
     }
 }
 ?>
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-40 mb-8 mx-auto block' />
                 </a> -->
 
-                <div class="p-8 rounded-2xl bg-white shadow">
+                <div class="p-8 rounded-2xl bg-white shadow-md">
                     <h2 class="text-gray-800 text-center text-2xl font-bold">Sign in</h2>
                     <form method="POST" class="mt-8 space-y-4">
                     <div>

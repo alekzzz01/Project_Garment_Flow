@@ -27,6 +27,7 @@ require './session/db.php';
                 <a class="btn btn-neutral" href="./session/login.php">Go to Login</a>
     </div>
 
+  
    
     
 </body>
