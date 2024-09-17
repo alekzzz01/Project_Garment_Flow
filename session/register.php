@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
+    
 
     if ($password !== $confirmPassword) {
         $error = 'Passwords do not match.';
@@ -69,7 +70,7 @@ $connection->close();
                     src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-40 mb-8 mx-auto block' />
                 </a> -->
 
-                <div class="p-8 rounded-2xl bg-white shadow">
+                <div class="p-8 rounded-2xl bg-white shadow-md">
                     <h2 class="text-gray-800 text-center text-2xl font-bold">Sign up</h2>
                     <form method="POST" class="mt-8 space-y-4">
                     <div>
@@ -146,6 +147,11 @@ $connection->close();
                 </form>
                 </div>
                 </div>
+
+                <?php if (isset($error)): ?>
+                    <div class="text-red-500 text-sm mt-8"><?php echo $error; ?></div>
+                <?php endif; ?>
+                
             </div>
         </div>
 
