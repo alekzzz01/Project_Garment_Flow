@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+
+h1, h2, h3, h4, h5, p, a {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+}
+
+
+
+.logo {
+    font-family: "Albert Sans", serif;
+}
+
+
+.menu-transition {
+    transition: max-height 0.3s ease-in-out;
+  
+}
+
+
+ /* Hide scrollbar for WebKit browsers */
+ .scroll-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+.scroll-container {
+    scrollbar-width: none; /* Hide scrollbar */
+}
