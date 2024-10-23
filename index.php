@@ -20,7 +20,7 @@
 </head>
 <body>
   
-    <?php include './includes/public/navbar.php' ?>
+  
 
    
 
@@ -28,7 +28,7 @@
           
               <h1 class="text-slate-900 font-bold text-5xl lg:text-6xl lg:px-96 text-center">Streamline your Garment Production with <span class="bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">Garment Flow</span></h1>
 
-              <p class="text-base lg:text-xl text-slate-500 pt-8 pb-16 lg:max-w-screen-sm text-center">A complete management solution for garment factories to monitor sales, orders, production, and inventory—all in one place.</p>
+              <p class="text-base lg:text-xl text-slate-500 pt-8 pb-16 lg:max-w-screen-sm text-center tracking-wide">A complete management solution for garment factories to monitor sales, orders, production, and inventory—all in one place.</p>
           
 
               <div class="flex gap-3">
@@ -51,7 +51,7 @@
                     <h4 class="text-3xl font-bold">What we do.</h4>
 
                 
-                    <p class="text-base text-slate-500 pt-4 max-w-lg text-center">Helping Garment Manufacturers Track Production and Clients Stay Informed Every Step of the Way</p>
+                    <p class="text-base text-slate-500 pt-4 max-w-lg text-center tracking-wide">Helping Garment Manufacturers Track Production and Clients Stay Informed Every Step of the Way</p>
 
 
                 </div>
@@ -232,12 +232,12 @@
           
             <h4 class="text-xl font-bold text-start">Trusted by local garment owners</h4>
 
-                    <div x-data="{}" x-init="$nextTick(() => {
+            <div x-data="{}" x-init="$nextTick(() => {
                             let ul = $refs.logos;
                             ul.insertAdjacentHTML('afterend', ul.outerHTML);
                             ul.nextSibling.setAttribute('aria-hidden', 'true');
                         })"
-                        class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
+                        class="w-full inline-flex flex-nowrap overflow-hidden  [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
                             >
                         <ul x-ref="logos" class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
                             <li>
@@ -259,7 +259,7 @@
                                 <img src="https://t3.ftcdn.net/jpg/03/50/24/62/360_F_350246210_vYL3d3kIbvlwEdFPNd4ikzz68oRCI2I4.jpg" alt="Facebook" />
                             </li>
                         </ul>                
-                    </div>
+            </div>
 
             <div id="loader" class="hidden">Loading...</div>
          
@@ -274,7 +274,7 @@
             <div class="flex flex-col items-center justify-center ">
                 <h4 class=" text-3xl lg:text-5xl font-bold max-w-72 text-center">We’ve Got You Covered</h4>
                 
-                <p class="text-base text-slate-500 max-w-lg pt-8 text-center">With our approach to building clothing brands, there’s never been a more comfortable way to start your clothing brand.</p>
+                <p class="text-base text-slate-500 max-w-lg pt-8 text-center tracking-wide">With our approach to building clothing brands, there’s never been a more comfortable way to start your clothing brand.</p>
             </div>
 
          
@@ -287,10 +287,10 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full h-full ">
 
 
-                <img src="./assets/images/image (4).jpg" alt="" class="hidden md:block lg:block h-[600px]" data-aos="fade-right"  data-aos-duration="2000">
+                <img src="./assets/images/image (4).jpg" alt="" class="hidden md:block lg:block h-[600px]">
 
 
-                <div class="bg-blue-500 w-full h-[400px] lg:h-[600px] flex flex-col gap-9 items-start justify-center pl-8 lg:pl-24" data-aos="fade-left"  data-aos-duration="2000">
+                <div class="bg-blue-500 w-full h-[400px] lg:h-[600px] flex flex-col gap-9 items-start justify-center pl-8 lg:pl-24" >
 
                         <h3 class="text-3xl lg:text-4xl font-bold text-white">Ready to start your brand?</h3>
 
@@ -326,7 +326,7 @@
 
 
  
-    <?php include './includes/public/footer.php' ?>
+    <?php include './dist/includes/public/footer.php' ?>
 
 
 

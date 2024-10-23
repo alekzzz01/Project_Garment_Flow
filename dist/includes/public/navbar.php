@@ -33,7 +33,7 @@
         <li><a href="#" class="text-slate-500 hover:text-blue-500 text-sm font-medium transition-colors duration-300 ease-in-out">About</a></li>
         <li><a href="#" class="text-slate-500 hover:text-blue-500 text-sm font-medium transition-colors duration-300 ease-in-out">Features</a></li>
         <li><a href="#" class="text-slate-500 hover:text-blue-500 text-sm font-medium transition-colors duration-300 ease-in-out">Contact</a></li>
-        <li><a href="#" class="px-4 py-2 text-white text-sm font-medium  rounded-full bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-700 focus:ring-offset-2 focus:ring-offset-yellow-50 transition-colors ease-in-out">Register</a></li>
+        <li><a href="././auth/register.php" class="px-4 py-2 text-white text-sm font-medium  rounded-full bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-700 focus:ring-offset-2 focus:ring-offset-yellow-50 transition-colors ease-in-out">Register</a></li>
       </ul>
     </div>
 
@@ -46,7 +46,7 @@
         <li><a href="#" class="text-slate-500 hover:text-blue-500 text-sm font-medium transition-colors duration-300 ease-in-out">Home</a></li>
         <li><a href="#" class="text-slate-500 hover:text-blue-500 text-sm font-medium transition-colors duration-300 ease-in-out">About</a></li>
         <li><a href="#" class="text-slate-500 hover:text-blue-500 text-sm font-medium transition-colors duration-300 ease-in-out">Contact</a></li>
-        <li><a href="#" class="text-slate-500 hover:text-blue-500 text-sm font-medium transition-colors duration-300 ease-in-out">Login</a></li>
+        <li><a href="#" class="text-slate-500 hover:text-blue-500 text-sm font-medium transition-colors duration-300 ease-in-out">Register</a></li>
       </ul>
     </div>
 

@@ -43,3 +43,26 @@ const container = document.getElementById('scroll-container');
           behavior: 'smooth' // Smooth scroll
       });
 }
+
+
+// sidebar responsive
+
+
+$(document).ready(function() {
+    $('#toggleSidebar').on('click', function() {
+        $('#sidebar').toggleClass('-translate-x-full');
+    });
+
+     $('#closeSidebar').on('click', function() {
+        $('#sidebar').addClass('-translate-x-full');
+    });
+
+    // Close the sidebar when clicking outside of it
+    // $(document).on('click', function(event) {
+    //     if (!$(event.target).closest('#sidebar, #toggleSidebar').length) {
+    //         $('#sidebar').addClass('-translate-x-full');
+    //     }
+    // });
+
+    
+});
