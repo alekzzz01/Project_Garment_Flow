@@ -20,6 +20,7 @@
 </head>
 <body>
   
+    <?php include './dist/includes/public/navbar.php'?>
   
 
    
@@ -28,7 +29,7 @@
           
               <h1 class="text-slate-900 font-bold text-5xl lg:text-6xl lg:px-96 text-center">Streamline your Garment Production with <span class="bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">Garment Flow</span></h1>
 
-              <p class="text-base lg:text-xl text-slate-500 pt-8 pb-16 lg:max-w-screen-sm text-center tracking-wide">A complete management solution for garment factories to monitor sales, orders, production, and inventory—all in one place.</p>
+              <p class="text-base text-slate-500 pt-8 pb-16 lg:max-w-screen-sm text-center tracking-wide">A complete management solution for garment factories to monitor sales, orders, production, and inventory—all in one place.</p>
           
 
               <div class="flex gap-3">

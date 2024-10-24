@@ -1,4 +1,4 @@
-<nav class="bg-white shadow md:shadow-none md:bg-transparent p-4 flex justify-between md:justify-end lg:justify-end items-center border-b h-20">
+<nav class="bg-white shadow md:shadow-none md:bg-transparent p-4 flex justify-between md:justify-end lg:justify-end items-center border-b border-l h-20">
    
 
         <button id="toggleSidebar" class="md:hidden focus:outline-none btn btn-ghost">
@@ -8,7 +8,7 @@
         </button>
 
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center">
 
             <div class="dropdown dropdown-end  h-full">
                 <div tabindex="0" role="button" class="btn btn-ghost">

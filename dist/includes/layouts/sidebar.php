@@ -1,9 +1,9 @@
-<div id="sidebar" class="bg-white w-full md:w-64 lg:w-64 h-screen fixed transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 border-r z-50">
+<div id="sidebar" class="bg-base-100 w-full md:w-64 lg:w-64 h-full fixed md:relative lg:relative transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 z-50">
     
     
-      <div class="flex justify-between items-center p-6 border-b h-20">
-          <div class="text-black text-xl font-bold ">
-              <a href="#" class="logo  text-slate-800 text-xl tracking-tighter font-black ">Garment Flow.</a>
+      <div class="flex justify-between items-center p-6 border-b h-20 ">
+          <div class="text-xl font-bold ">
+              <a href="#" class="logo text-xl tracking-tighter font-black ">Garment Flow.</a>
           </div>
 
           <button id="closeSidebar" class="btn btn-ghost block md:hidden lg:hidden">
@@ -14,7 +14,7 @@
 
       </div>
 
-      <ul class="menu text-base h-screen p-4">
+      <ul class="menu text-base p-4">
         <li>
           <a class="p-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 mr-2">
